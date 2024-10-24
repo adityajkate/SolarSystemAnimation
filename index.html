@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Solar System Animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background: radial-gradient(ellipse at center, #000000, #0d1b2a) no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+        }
+        .solar-system {
+            position: relative;
+            width: 800px;
+            height: 800px;
+            margin: 50px auto;
+        }
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            margin-top: -50px;
+            margin-left: -50px;
+            background-color: #FFA500;
+            border-radius: 50%;
+            box-shadow: 0 0 30px 15px #FFA500;
+        }
+        .label {
+            position: absolute;
+            color: #fff;
+            font-size: 12px;
+            white-space: nowrap;
+            transform: translate(-50%, -150%);
+        }
+        .planet {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            margin-top: -15px;
+            margin-left: -15px;
+            background-color: #00F;
+            border-radius: 50%;
+        }
+        /* Adding different planets with unique orbits */
+        .planet.mercury {
+            animation: orbit-mercury 5s linear infinite;
+            width: 10px;
+            height: 10px;
+            background-color: #aaa;
+        }
+        .planet.venus {
+            animation: orbit-venus 8s linear infinite;
+            width: 20px;
+            height: 20px;
+            background-color: #f90;
+        }
+        .planet.earth {
+            animation: orbit-earth 15s linear infinite;
+            width: 40px;
+            height: 40px;
+            background-color: #0F0;
+        }
+        .planet.mars {
+            animation: orbit-mars 20s linear infinite;
+            width: 25px;
+            height: 25px;
+            background-color: #c00;
+        }
+        .planet.jupiter {
+            animation: orbit-jupiter 30s linear infinite;
+            width: 50px;
+            height: 50px;
+            background-color: #ff4500;
+        }
+        .planet.saturn {
+            animation: orbit-saturn 35s linear infinite;
+            width: 45px;
+            height: 45px;
+            background-color: #f4a460;
+        }
+        .planet.uranus {
+            animation: orbit-uranus 40s linear infinite;
+            width: 30px;
+            height: 30px;
+            background-color: #7fffd4;
+        }
+        .planet.neptune {
+            animation: orbit-neptune 45s linear infinite;
+            width: 35px;
+            height: 35px;
+            background-color: #4169e1;
+        }
+
+        @keyframes orbit-mercury {
+            0% {
+                transform: rotate(0deg) translateX(100px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(100px) rotate(-360deg);
+            }
+        }
+        @keyframes orbit-venus {
+            0% {
+                transform: rotate(0deg) translateX(150px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(150px) rotate(-360deg);
+            }
+        }
+        @keyframes orbit-earth {
+            0% {
+                transform: rotate(0deg) translateX(200px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(200px) rotate(-360deg);
+            }
+        }
+        @keyframes orbit-mars {
+            0% {
+                transform: rotate(0deg) translateX(250px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(250px) rotate(-360deg);
+            }
+        }
+        @keyframes orbit-jupiter {
+            0% {
+                transform: rotate(0deg) translateX(300px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(300px) rotate(-360deg);
+            }
+        }
+        @keyframes orbit-saturn {
+            0% {
+                transform: rotate(0deg) translateX(350px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(350px) rotate(-360deg);
+            }
+        }
+        @keyframes orbit-uranus {
+            0% {
+                transform: rotate(0deg) translateX(400px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(400px) rotate(-360deg);
+            }
+        }
+        @keyframes orbit-neptune {
+            0% {
+                transform: rotate(0deg) translateX(450px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(450px) rotate(-360deg);
+            }
+        }
+
+        .twinkling {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent url('https://i.imgur.com/aPzB2qE.png') repeat;
+            animation: twinkling 200s linear infinite;
+        }
+
+        @keyframes twinkling {
+            0% { background-position: 0 0; }
+            100% { background-position: -10000px 5000px; }
+        }
+
+        .made-by {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="made-by">Made by Aditya</div>
+    <div class="twinkling"></div>
+    <div class="solar-system">
+        <div class="sun"></div>
+        <div class="label" style="top: 50%; left: 50%; margin-top: -80px;">Sun</div>
+        <div class="planet mercury" onclick="showPlanetInfo('Mercury')">
+            <div class="label">Mercury</div>
+        </div>
+        <div class="planet venus" onclick="showPlanetInfo('Venus')">
+            <div class="label">Venus</div>
+        </div>
+        <div class="planet earth" onclick="showPlanetInfo('Earth')">
+            <div class="label">Earth</div>
+        </div>
+        <div class="planet mars" onclick="showPlanetInfo('Mars')">
+            <div class="label">Mars</div>
+        </div>
+        <div class="planet jupiter" onclick="showPlanetInfo('Jupiter')">
+            <div class="label">Jupiter</div>
+        </div>
+        <div class="planet saturn" onclick="showPlanetInfo('Saturn')">
+            <div class="label">Saturn</div>
+        </div>
+        <div class="planet uranus" onclick="showPlanetInfo('Uranus')">
+            <div class="label">Uranus</div>
+        </div>
+        <div class="planet neptune" onclick="showPlanetInfo('Neptune')">
+            <div class="label">Neptune</div>
+        </div>
+    </div>
+    <div id="info" style="margin-top: 20px;"></div>
+    <script>
+        function showPlanetInfo(planetName) {
+            let info = document.getElementById("info");
+            switch (planetName) {
+                case 'Mercury':
+                    info.innerHTML = '<h3>Mercury</h3><p>Mercury is the closest planet to the Sun and the smallest planet in our solar system.</p>';
+                    break;
+                case 'Venus':
+                    info.innerHTML = '<h3>Venus</h3><p>Venus is the second planet from the Sun and has a thick, toxic atmosphere.</p>';
+                    break;
+                case 'Earth':
+                    info.innerHTML = '<h3>Earth</h3><p>Earth is the third planet from the Sun and the only astronomical object known to harbor life.</p>';
+                    break;
+                case 'Mars':
+                    info.innerHTML = '<h3>Mars</h3><p>Mars is known as the Red Planet due to its reddish appearance caused by iron oxide on its surface.</p>';
+                    break;
+                case 'Jupiter':
+                    info.innerHTML = '<h3>Jupiter</h3><p>Jupiter is the largest planet in our solar system, known for its prominent Great Red Spot.</p>';
+                    break;
+                case 'Saturn':
+                    info.innerHTML = '<h3>Saturn</h3><p>Saturn is known for its extensive ring system and is the sixth planet from the Sun.</p>';
+                    break;
+                case 'Uranus':
+                    info.innerHTML = '<h3>Uranus</h3><p>Uranus has a unique side rotation and is known for its pale blue color due to methane in its atmosphere.</p>';
+                    break;
+                case 'Neptune':
+                    info.innerHTML = '<h3>Neptune</h3><p>Neptune is the farthest planet from the Sun and is known for its intense blue color and strong winds.</p>';
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
